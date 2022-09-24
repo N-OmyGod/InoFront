@@ -1,0 +1,22 @@
+<div class="confirm-account-wrapper">
+    <div class="wrapper">
+        <form class="form" [formGroup]="form" (submit)="submit()">
+            <span class="title">Добро пожаловать!</span>
+            <div class="form-control-wrapper">
+                <span class="subtitle">Введите код, который пришел в письме</span>
+                <input type="text" class="form-input" placeholder="Введите код из письма" formControlName="code">
+            </div>
+            
+            <div class="form-control-wrapper">
+                <input type="submit" value="Подтвердить email" class="submit">
+                <div>
+                    Уже зарегистрированы? <a href="">Войти</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="side-image">
+        <img src="assets/images/bg-shapes.svg" alt="">
+    </div>
+</div>
