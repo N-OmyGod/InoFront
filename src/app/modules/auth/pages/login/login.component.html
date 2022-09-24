@@ -1,1 +1,26 @@
-<p>login works!</p>
+<div class="login-wrapper">
+    <div class="wrapper">
+        <form class="form" [formGroup]="form" (submit)="submit()">
+            <span class="title">Добро пожаловать!</span>
+            <span class="subtitle">Сервис InoCar для вашего автомобиля</span>
+            <div class="form-control-wrapper">
+                <span>E-mail</span>
+                <input type="text" class="form-input" placeholder="Введите имя" formControlName="email">
+            </div>
+            <div class="form-control-wrapper">
+                <span>Пароль</span>
+                <input type="text" class="form-input" placeholder="Введите фамилию" formControlName="password">
+            </div>
+            <div class="form-control-wrapper">
+                <input type="submit" value="Войти" class="submit">
+                <div>
+                    Еще не зарегистрированы? <a href="">Регистрация</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="side-image">
+        <img src="assets/images/bg-shapes.svg" alt="">
+    </div>
+</div>

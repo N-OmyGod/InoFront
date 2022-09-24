@@ -1,0 +1,18 @@
+.container{
+  overflow: hidden;
+  margin: 0;
+}
+.content-wrapper{
+    display: flex;
+    flex-direction: row;
+    height: 88vh;
+    width: 100%;
+
+    app-side-menu{
+      width: 18%;
+    }
+
+    .outlet-wrapper{
+      width: 82%;
+    }
+}
