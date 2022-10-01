@@ -35,7 +35,8 @@ export class ListComponent implements OnInit , AfterViewInit {
     },
   ];
 
-  dataSource = new MatTableDataSource<ApiCarModel>(this.cars);
+  // dataSource = new MatTableDataSource<ApiCarModel>(this.cars);
+  dataSource:ApiCarModel[] = [];
   displayedColumns: string[] = ['id', 'mark', 'model', 'stateNumber'];
 
 
@@ -59,12 +60,14 @@ export class ListComponent implements OnInit , AfterViewInit {
         this.spinner.hide();
       }),
     ).subscribe((res)=>{
-      this.cars = res.Items;
+      this.cars = res.items;
+      this.dataSource=res.items;
+      console.log(res);
     });
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    // this.dataSource.paginator = this.paginator;
   }
 
   clickOnRow(row: ApiCarModel): void{

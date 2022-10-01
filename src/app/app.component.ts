@@ -6,16 +6,16 @@ import { SpinnerService } from './common/services/spinner.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'InoFront';
-  isLoading = true;
+  isLoading = false;
 
   constructor(private spinnerService: SpinnerService){}
 
-  ngOnInit(): void {
-    this.spinnerService.$showSpinner
-    .subscribe((res) => {
-      this.isLoading = res;
-    })
-  }
+  // ngOnInit(): void {
+  //   this.spinnerService.$showSpinner
+  //   .subscribe((res) => {
+  //     this.isLoading = res;
+  //   })
+  // }
 }

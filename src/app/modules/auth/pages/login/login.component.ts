@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(body)
       .subscribe(
         (res) =>{
-          this.storageService.set('acessToken', res.result!.accessToken)
+          this.storageService.set('accessToken', res.result!.accessToken)
           this.storageService.set('refreshToken', res.result!.refreshToken)
           this.router.navigate(['cars']) //переход на другую страницу
           console.log(res)

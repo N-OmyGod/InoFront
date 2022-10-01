@@ -36,7 +36,7 @@ export class ViewCarDialogComponent implements OnInit {
     private spinner: SpinnerService ) { }
 
   ngOnInit(): void {
-    //this.loadCar();
+    this.loadCar();
   }
 
   loadCar(): void{

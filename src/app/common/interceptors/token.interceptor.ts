@@ -14,12 +14,12 @@ export class TokenInterceptor implements HttpInterceptor {
   constructor(private storageService: StorageService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    let acessToken = this.storageService.get('acessToken')
-     console.log(acessToken)
+    let accessToken = this.storageService.get('accessToken')
+     console.log(accessToken)
       request=request.clone(
         {
           setHeaders:{ 
-            Authorization: `Bearer ${acessToken ? acessToken : ''}`
+            Authorization: `Bearer ${accessToken ? accessToken : ''}`
           }
         }
       )
