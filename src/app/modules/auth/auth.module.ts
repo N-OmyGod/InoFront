@@ -15,7 +15,7 @@ import { PasswordComponent } from './pages/password/password.component';
     RegistrationComponent,
     LoginComponent,
     ConfirmAccountComponent,
-    PasswordComponent
+    PasswordComponent,
   ],
   imports: [
     CommonModule,
