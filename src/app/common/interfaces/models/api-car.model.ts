@@ -1,5 +1,11 @@
 export interface ApiCarModel{
-    Id: Int16Array;
-    StateNumber: string;
-    Model: string;
+    id: number;
+    stateNumber: string;
+    model: string;
+    mark: string;
+    isCompleted?: boolean;
+    
+
+    //for table
+    active?: boolean;
 }

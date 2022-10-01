@@ -1,0 +1,42 @@
+<div class="cars-list-wrapepr">
+    <div class="table-wrapper">
+        <table mat-table [dataSource]="dataSource">
+
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>  </th>
+                <td mat-cell *matCellDef="let element"> 
+                    <input type="checkbox" name="" id="">    
+                </td>
+              </ng-container>
+    
+              <ng-container matColumnDef="mark">
+                <th mat-header-cell *matHeaderCellDef>Mark</th>
+                <td mat-cell *matCellDef="let element"  (click)="clickOnRow(element)"> {{element.mark}} </td>
+              </ng-container>
+    
+              <ng-container matColumnDef="model">
+                <th mat-header-cell *matHeaderCellDef> Model </th>
+                <td mat-cell *matCellDef="let element"  (click)="clickOnRow(element)"> {{element.model}} </td>
+              </ng-container>
+    
+              <ng-container matColumnDef="stateNumber">
+                <th mat-header-cell *matHeaderCellDef> State Number </th>
+                <td mat-cell *matCellDef="let element"  (click)="clickOnRow(element)"> {{element.stateNumber}} </td>
+              </ng-container>
+          
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+            showFirstLastButtons 
+            aria-label="Select page of periodic elements">
+        </mat-paginator> -->
+    </div>
+    <div class="actions-wrapper">
+        <button mat-raised-button [disabled]="!carSelected">Удалить</button>
+        <button mat-raised-button [disabled]="!carSelected">Редактировать</button>
+        <button mat-raised-button>Добавить</button>
+        <button mat-raised-button>Заявка на сервис</button>
+    </div>
+
+</div>

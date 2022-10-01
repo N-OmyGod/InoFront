@@ -1,5 +1,10 @@
 <div class="side-menu-wrapper">
     <div *ngFor="let item of items">
-        <span>{{item.title}}</span>
+        <div class="side-menu-item" 
+            [ngClass]="{'active': item.active}" 
+            (click)="click(item.id)"
+        >
+            <span>{{item.title}}</span>
+        </div>
     </div>
 </div>

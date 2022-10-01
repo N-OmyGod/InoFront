@@ -6,9 +6,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthGuard } from './common/guards/auth.guard';
 import { TokenInterceptor } from './common/interceptors/token.interceptor';
 import { AuthModule } from './modules/auth/auth.module';
 import { SharedModule } from './shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,13 +24,17 @@ import { SharedModule } from './shared/shared.module';
     AuthModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
-  providers: [{
+  providers: [
+    AuthGuard,
+  {
     provide:HTTP_INTERCEPTORS, 
     useClass:TokenInterceptor,
     multi:true
   }],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 export interface SideMenuItem{
   id: number,
   path: string,
-  title: string
+  title: string,
+  active: boolean
 }
 @Component({
   selector: 'app-side-menu',
@@ -11,26 +13,46 @@ export interface SideMenuItem{
   styleUrls: ['./side-menu.component.scss']
 })
 export class SideMenuComponent implements OnInit {
+  activeItemId: number = 1;
+
   items: SideMenuItem[] = [
     {
       id: 0,
       path: 'profile',
-      title: 'Профиль'
+      title: 'Профиль',
+      active: false
     },
     {
       id: 1,
-      path: 'garage',
-      title: 'Гараж'
+      path: 'cars',
+      title: 'Гараж',
+      active: true
     },
     {
       id: 2,
       path: 'dillerships',
-      title: 'Диллерские центры'
+      title: 'Диллерские центры',
+      active: false
     }
-  ]
-  constructor() { }
+  ];
+
+  constructor(private router: Router,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.click(this.activeItemId);
+  }
+
+  click(id: number): void{
+    let item = this.items.find((x)=> x.id === id)
+
+    if (item){
+      this.items[this.activeItemId].active = false;
+      this.items[id].active = true;
+      this.activeItemId = id;
+      this.router.navigate(['', item.path])
+    }
+
   }
 
 }

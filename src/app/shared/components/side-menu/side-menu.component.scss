@@ -4,4 +4,26 @@
     // width: 150px;
     height: 100%;
     border-right: 1px solid gray;
+
+    .side-menu-item{
+        display: flex;
+        align-items: center;
+        height: 60px;
+        padding-left: 15px;
+
+        user-select: none;
+
+        cursor: pointer;
+        text-transform: uppercase;
+
+        &.active{
+            color: #15303f;
+            background-color: rgba($color: #79ceff, $alpha: 0.5);
+        }
+
+        &:hover{
+            background-color: rgba($color: #79ceff, $alpha: 0.3);
+        }
+
+    }
 }
