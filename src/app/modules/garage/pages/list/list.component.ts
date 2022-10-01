@@ -3,8 +3,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ViewCarDialogComponent } from '@modules/garage/dialogs/view-car-dialog/view-car-dialog.component';
-import { config } from 'rxjs';
+import { config, finalize, map } from 'rxjs';
 import { ApiCarModel } from 'src/app/common/interfaces/models/api-car.model';
+import { GarageService } from 'src/app/common/services/garage/garage.service';
+import { SpinnerService } from 'src/app/common/services/spinner.service';
 
 @Component({
   selector: 'app-list',
@@ -31,7 +33,7 @@ export class ListComponent implements OnInit , AfterViewInit {
       mark: 'Austin',
       active: false
     },
-];
+  ];
 
   dataSource = new MatTableDataSource<ApiCarModel>(this.cars);
   displayedColumns: string[] = ['id', 'mark', 'model', 'stateNumber'];
@@ -40,11 +42,25 @@ export class ListComponent implements OnInit , AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
 
-  constructor(private matDialog: MatDialog) {
-    //
+  constructor(private matDialog: MatDialog, 
+    private spinner: SpinnerService,
+    private carService: GarageService) {
    }
 
   ngOnInit(): void {
+    this.load();
+  }
+
+  load(): void{
+    this.spinner.show();
+    this.carService.cars()
+    .pipe(
+      finalize(() => {
+        this.spinner.hide();
+      }),
+    ).subscribe((res)=>{
+      this.cars = res.Items;
+    });
   }
 
   ngAfterViewInit() {
@@ -52,14 +68,11 @@ export class ListComponent implements OnInit , AfterViewInit {
   }
 
   clickOnRow(row: ApiCarModel): void{
-    
     this.matDialog.open(ViewCarDialogComponent, {
       width: '750px',
       height: '500px',
       data: row.id,
-    })
-
-    console.log(row)
+    });
   }
 
 }

@@ -1,11 +1,66 @@
-<div>
+<div class="dialog-wrapper">
     <div class="dialog-title">
         <h3>Параметры автомобиля</h3>
         <mat-icon (click)="close()">close</mat-icon>
     </div>
+    <div class="content">
+        <div class="content-row">
+            <mat-form-field>
+                <mat-label>Mark</mat-label>
+                <input matInput placeholder="Just a placeholder" [value]="carDetails?.mark" [disabled]="true">
+              </mat-form-field>
 
+              <mat-form-field>
+                <mat-label>Model</mat-label>
+                <input matInput placeholder="Just a placeholder" [value]="carDetails?.model" [disabled]="true">
+              </mat-form-field>
 
-    <div>
+              <mat-form-field>
+                <mat-label>Year</mat-label>
+                <input matInput type="date" placeholder="Just a placeholder" [value]="carDetails!.year" [disabled]="true">
+              </mat-form-field>
+        </div>
+        <div class="content-row">
+            <mat-form-field>
+                <mat-label>Transmission</mat-label>
+                <mat-select [(value)]="carDetails!.transmission" [disabled]="true">
+                    <mat-option *ngFor="let transmission of transmissions" [value]="transmission.type">
+                      {{transmission.value}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
 
+            <mat-form-field>
+                <mat-label>Engine type</mat-label>
+                <mat-select [(value)]="carDetails!.engineType" [disabled]="true">
+                    <mat-option *ngFor="let engine of engines" [value]="engine.type">
+                      {{engine.value}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Drive type</mat-label>
+                <mat-select [(value)]="carDetails!.drive" [disabled]="true">
+                    <mat-option *ngFor="let drive of drives" [value]="drive.type">
+                      {{drive.value}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="content-row">
+            <mat-form-field>
+                <mat-label>Mileage</mat-label>
+                <input matInput placeholder="Just a placeholder" [value]="carDetails?.mileage" [disabled]="true">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>State Number</mat-label>
+                <input matInput placeholder="Just a placeholder" [value]="carDetails?.stateNumber" [disabled]="true">
+              </mat-form-field>
+        </div>
+    </div>
+    <div class="actions">
+        <button mat-raised-button>Отправить параметры на почту</button>
     </div>
 </div>

@@ -1,0 +1,31 @@
+.dialog-wrapper{
+    display: flex;
+    flex-direction: column;
+
+    .dialog-title{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        mat-icon{
+            cursor: pointer;
+        }
+    }
+
+    .content{
+        display: flex;
+        flex-direction: column;
+
+        .content-row{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            
+        }
+    }
+
+    .actions{
+        margin: 0 auto;
+    }
+}
