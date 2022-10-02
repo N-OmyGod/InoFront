@@ -13,15 +13,15 @@ export const CarEngineConsts = [
 
 export const CarDriveConsts = [
     {
-        value: 'Полный привод',
+        value: 'Полный',
         type: DriveType.AWD
     },
     {
-        value: 'Передний привод',
+        value: 'Передний',
         type: DriveType.FWD
     },
     {
-        value: 'Задний привод',
+        value: 'Задний',
         type: DriveType.RWD
     },
 ]

@@ -1,0 +1,16 @@
+<div class="dialog-wrapper">
+    <div class="dialog-title">
+        <h3>Удаление автомобиля</h3>
+        <mat-icon (click)="close(false)">close</mat-icon>
+    </div>
+
+    <div class="content">
+        <span>Вы точно хотите удалить автомобиль?</span>
+    </div>
+
+    <div class="actions">
+        <button mat-raised-button color="primary" (click)="delete()">Да</button>
+        <button mat-raised-button (click)="close(false)">Нет</button>
+    </div>
+
+</div>
