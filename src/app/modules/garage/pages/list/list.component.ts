@@ -18,7 +18,7 @@ import { SpinnerService } from 'src/app/common/services/spinner.service';
 export class ListComponent implements OnInit , AfterViewInit , OnDestroy{
   carSelected: boolean = false;
 
-  selectedcarIdx: ApiCarModel | null  = null;
+  selectedcarIdx: number | null  = null;
 
   cars: ApiCarModel[] = [
     {
@@ -71,30 +71,39 @@ export class ListComponent implements OnInit , AfterViewInit , OnDestroy{
   }
 
   openDeleteDialog(): void{
-    this.matDialog.open(DeleteCarDialogComponent,{
-      width: '550px',
-      height: '200px'
-    }).afterClosed()
-    .pipe(
-      takeUntil(this.destroyed),
-    )
-    .subscribe((result) => {
-      if (result){
-        this.load();
-      }
-    })
+    if (this.selectedcarIdx){
+      this.matDialog.open(DeleteCarDialogComponent,{
+        width: '550px',
+        height: '200px',
+        data: {
+          id: this.selectedcarIdx
+        }
+      }).afterClosed()
+      .pipe(
+        takeUntil(this.destroyed),
+      )
+      .subscribe((result) => {
+        if (result){
+          this.load();
+        }
+      })
+    }
+
   }
 
   openEditDialog(): void{
-    let data: EditOrViewDialog = {
-      id: 1,
-      edit: true
+    if (this.selectedcarIdx){
+      let data: EditOrViewDialog = {
+        id: this.selectedcarIdx,
+        edit: true
+      }
+      this.matDialog.open(ViewCarDialogComponent, {
+        width: '750px',
+        height: '500px',
+        data
+      });
     }
-    this.matDialog.open(ViewCarDialogComponent, {
-      width: '750px',
-      height: '500px',
-      data
-    });
+
   }
 
   ngAfterViewInit() {
@@ -111,6 +120,19 @@ export class ListComponent implements OnInit , AfterViewInit , OnDestroy{
       height: '500px',
       data
     });
+  }
+
+  changeActive(id: number): void{
+    if (id === this.selectedcarIdx){
+      this.selectedcarIdx = null;
+    } else {
+      this.selectedcarIdx = id;
+    }
+    this.cars.forEach((x)=>{
+      x.id == id 
+        ? x.active = !x.active
+        : x.active = false
+    })
   }
 
   ngOnDestroy(): void {

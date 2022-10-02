@@ -13,14 +13,14 @@ export class DeleteCarDialogComponent implements OnInit {
   
   constructor(private carService: GarageService,
     public dialogRef: MatDialogRef<DeleteCarDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: number,) { }
+    @Inject(MAT_DIALOG_DATA) public data: any,) { }
 
   ngOnInit(): void {
     this.load();
   }
 
   load(): void{
-    this.carService.getCarById(this.data)
+    this.carService.getCarById(this.data.id)
     .pipe(
     )
     .subscribe((res) => {
