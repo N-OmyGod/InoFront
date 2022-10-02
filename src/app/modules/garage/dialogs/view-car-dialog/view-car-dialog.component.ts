@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { finalize } from 'rxjs';
 import { CarDriveConsts, CarEngineConsts, CarTransmissionConsts } from 'src/app/common/constants/car-details.const';
+import { CarCharacteristicsRequestDTO } from 'src/app/common/interfaces/dto/carCharacteristicsRequest.dto';
 import { ApiCarDetailsModel, DriveType, EngineType, TransmissionType } from 'src/app/common/interfaces/models/api-car-details.model';
 import { GarageService } from 'src/app/common/services/garage/garage.service';
 import { SpinnerService } from 'src/app/common/services/spinner.service';
@@ -12,7 +13,7 @@ import { SpinnerService } from 'src/app/common/services/spinner.service';
   styleUrls: ['./view-car-dialog.component.scss']
 })
 export class ViewCarDialogComponent implements OnInit {
-
+  
   carDetails: ApiCarDetailsModel | null = {
     id: 1,
     mark: 'BMW',
@@ -28,6 +29,7 @@ export class ViewCarDialogComponent implements OnInit {
   transmissions = CarTransmissionConsts;
   drives = CarDriveConsts;
   engines = CarEngineConsts;
+
 
   constructor(
     public dialogRef: MatDialogRef<ViewCarDialogComponent>,
@@ -56,4 +58,10 @@ export class ViewCarDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  sendCharacteristics():void{
+    console.log("Hi");
+    let dto: CarCharacteristicsRequestDTO={carId: this.carDetails!.id, email: null }
+    console.log(dto);
+    this.carService.sendCarCharacteristicsToEmail(dto).subscribe()
+  }
 }

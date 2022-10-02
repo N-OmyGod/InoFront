@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { ApiCarModel } from '../../interfaces/models/api-car.model';
 import { ApiResponse } from '../../interfaces/models/api-response.model';
 import { ApiCarDetailsModel } from '../../interfaces/models/api-car-details.model';
+import { CarCharacteristicsRequestDTO } from '../../interfaces/dto/carCharacteristicsRequest.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,9 @@ export class GarageService {
         id
       }
     })
+  }
+
+  sendCarCharacteristicsToEmail(body: CarCharacteristicsRequestDTO): Observable<any>{
+    return this.http.post<any>(this.url+'send-email',body) 
   }
 }
