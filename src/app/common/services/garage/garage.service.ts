@@ -5,12 +5,9 @@ import { environment } from 'src/environments/environment';
 import { ApiCarModel } from '../../interfaces/models/api-car.model';
 import { ApiResponse } from '../../interfaces/models/api-response.model';
 import { ApiCarDetailsModel } from '../../interfaces/models/api-car-details.model';
-<<<<<<< HEAD
 import { CarCharacteristicsRequestDTO } from '../../interfaces/dto/carCharacteristicsRequest.dto';
-=======
 import { UpdateCarDto } from '../../interfaces/dto/car.dto';
 import { ApiResponseMessage } from '../../interfaces/models/api-response-message.model';
->>>>>>> e4ef5a33c76ed09effdce7a9d3fd295b5fa60ae6
 
 @Injectable({
   providedIn: 'root'
@@ -35,16 +32,13 @@ export class GarageService {
     })
   }
 
-<<<<<<< HEAD
   sendCarCharacteristicsToEmail(body: CarCharacteristicsRequestDTO): Observable<any>{
-    return this.http.post<any>(this.url+'send-email',body) 
-=======
+    return this.http.post<any>(this.url+'send-email',body) }
   deleteCar(carCertificateId: number, removeCarReason: number): Observable<boolean>{
     return this.http.delete<boolean>(`${this.url}${carCertificateId}/${removeCarReason}`);
   }
 
   updateCar(carId: number, dto: UpdateCarDto): Observable<ApiResponseMessage<boolean>>{
     return this.http.put<ApiResponseMessage<boolean>>(`${this.url}${carId}`, dto);
->>>>>>> e4ef5a33c76ed09effdce7a9d3fd295b5fa60ae6
   }
 }
