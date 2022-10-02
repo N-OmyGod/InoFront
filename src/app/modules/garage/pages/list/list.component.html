@@ -33,8 +33,8 @@
         </mat-paginator> -->
     </div>
     <div class="actions-wrapper">
-        <button mat-raised-button [disabled]="!carSelected">Удалить</button>
-        <button mat-raised-button [disabled]="!carSelected">Редактировать</button>
+        <button mat-raised-button [disabled]="carSelected" (click)="openDeleteDialog()">Удалить</button>
+        <button mat-raised-button [disabled]="carSelected" (click)="openEditDialog()">Редактировать</button>
         <button mat-raised-button>Добавить</button>
         <button mat-raised-button>Заявка на сервис</button>
     </div>

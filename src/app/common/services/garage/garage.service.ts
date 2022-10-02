@@ -5,6 +5,8 @@ import { environment } from 'src/environments/environment';
 import { ApiCarModel } from '../../interfaces/models/api-car.model';
 import { ApiResponse } from '../../interfaces/models/api-response.model';
 import { ApiCarDetailsModel } from '../../interfaces/models/api-car-details.model';
+import { UpdateCarDto } from '../../interfaces/dto/car.dto';
+import { ApiResponseMessage } from '../../interfaces/models/api-response-message.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +29,13 @@ export class GarageService {
         id
       }
     })
+  }
+
+  deleteCar(carCertificateId: number, removeCarReason: number): Observable<boolean>{
+    return this.http.delete<boolean>(`${this.url}${carCertificateId}/${removeCarReason}`);
+  }
+
+  updateCar(carId: number, dto: UpdateCarDto): Observable<ApiResponseMessage<boolean>>{
+    return this.http.put<ApiResponseMessage<boolean>>(`${this.url}${carId}`, dto);
   }
 }

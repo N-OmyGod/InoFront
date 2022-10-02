@@ -2,12 +2,13 @@ export interface ApiCarDetailsModel{
     id: number;
     mark: string;
     model: string;
-    year: Date;
+    year: number;
     stateNumber: string;
-    transmission?: TransmissionType;
-    engineType?: EngineType;
-    drive?: DriveType;
+    transmission?: number | TransmissionType;
+    engineType?: string | EngineType;
+    drive?: string | DriveType;
     mileage: number;
+    certificateId: number;
 }
 
 export enum TransmissionType{

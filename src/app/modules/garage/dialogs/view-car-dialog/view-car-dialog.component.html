@@ -1,9 +1,10 @@
 <div class="dialog-wrapper">
     <div class="dialog-title">
-        <h3>Параметры автомобиля</h3>
-        <mat-icon (click)="close()">close</mat-icon>
+        <h3>{{data.edit? editTitle: viewTitle}}</h3>
+        <mat-icon (click)="close(false)">close</mat-icon>
     </div>
-    <div class="content">
+    <ng-container *ngIf="!data.edit; else edit_form">
+      <div class="content" >
         <div class="content-row">
             <mat-form-field>
                 <mat-label>Mark</mat-label>
@@ -17,7 +18,7 @@
 
               <mat-form-field>
                 <mat-label>Year</mat-label>
-                <input matInput type="date" placeholder="Just a placeholder" [value]="carDetails!.year" [disabled]="true">
+                <input matInput placeholder="Just a placeholder" [value]="carDetails!.year" [disabled]="true">
               </mat-form-field>
         </div>
         <div class="content-row">
@@ -60,7 +61,76 @@
               </mat-form-field>
         </div>
     </div>
-    <div class="actions">
+
+      <div class="actions">
         <button mat-raised-button>Отправить параметры на почту</button>
+      </div>
+    </ng-container>
+
+    <ng-template #edit_form>
+      <form  class="content" action="" [formGroup]="form">
+        <div class="content-row">
+          <mat-form-field>
+              <mat-label>Mark</mat-label>
+              <input matInput placeholder="Just a placeholder" formControlName="mark">
+            </mat-form-field>
+  
+            <mat-form-field>
+              <mat-label>Model</mat-label>
+              <input matInput placeholder="Just a placeholder" formControlName="model">
+            </mat-form-field>
+  
+            <mat-form-field>
+              <mat-label>Year</mat-label>
+              <input matInput placeholder="Just a placeholder" formControlName="year">
+            </mat-form-field>
+      </div>
+      <div class="content-row">
+          <mat-form-field>
+              <mat-label>Transmission</mat-label>
+              <mat-select formControlName="transmission">
+                  <mat-option *ngFor="let transmission of transmissions" [value]="transmission.type">
+                    {{transmission.value}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+  
+          <mat-form-field>
+              <mat-label>Engine type</mat-label>
+              <mat-select formControlName="engineType">
+                  <mat-option *ngFor="let engine of engines" [value]="engine.type">
+                    {{engine.value}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+  
+          <mat-form-field>
+              <mat-label>Drive type</mat-label>
+              <mat-select formControlName="drive">
+                  <mat-option *ngFor="let drive of drives" [value]="drive.type">
+                    {{drive.value}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+      </div>
+      <div class="content-row">
+          <mat-form-field>
+              <mat-label>Mileage</mat-label>
+              <input matInput placeholder="Just a placeholder" formControlName="mileage">
+            </mat-form-field>
+  
+            <mat-form-field>
+              <mat-label>State Number</mat-label>
+              <input matInput placeholder="Just a placeholder" formControlName="stateNumber">
+            </mat-form-field>
+      </div>
+      </form>
+
+      <div class="actions">
+        <button mat-raised-button color="primary" (click)="save()">Сохранить</button>
+        <button mat-raised-button (click)="close(false)">Нет</button>
     </div>
+    </ng-template>
+    
+
 </div>
