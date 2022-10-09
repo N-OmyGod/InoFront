@@ -115,7 +115,7 @@ export class ViewCarDialogComponent implements OnInit {
           : this.convertService.convertDriveToString(this.form.get('drive')?.value),
         engineType: this.form.get('engineType')?.pristine 
           ? null 
-          : this.convertService.convertDriveToString(this.form.get('engineType')?.value),
+          : this.convertService.convertEngineToString(this.form.get('engineType')?.value),
         stateNumber: this.form.get('stateNumber')?.pristine ? null : this.form.get('stateNumber')?.value,
       }
 

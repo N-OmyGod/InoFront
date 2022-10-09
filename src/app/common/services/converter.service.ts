@@ -33,7 +33,7 @@ export class ConverterService {
     return this.drives.find((x) => x.type == value)?.value
   }
 
-  convertEngineToSTring(value: EngineType): string | undefined{
+  convertEngineToString(value: EngineType): string | undefined{
     return this.engines.find((x) => x.type == value)?.value
   }
 }

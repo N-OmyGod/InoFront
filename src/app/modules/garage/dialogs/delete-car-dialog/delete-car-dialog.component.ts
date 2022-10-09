@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ApiCarDetailsModel } from 'src/app/common/interfaces/models/api-car-details.model';
+import { CarCertificateService } from 'src/app/common/services/car-certificate/car-certificate.service';
 import { GarageService } from 'src/app/common/services/garage/garage.service';
 
 @Component({
@@ -13,9 +14,11 @@ export class DeleteCarDialogComponent implements OnInit {
   
   constructor(private carService: GarageService,
     public dialogRef: MatDialogRef<DeleteCarDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,) { }
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private certificatesService: CarCertificateService) { }
 
   ngOnInit(): void {
+    console.log(this.data)
     this.load();
   }
 
@@ -25,12 +28,13 @@ export class DeleteCarDialogComponent implements OnInit {
     )
     .subscribe((res) => {
       this.carDetails = res;
+      console.log(this.carDetails);
     });
   }
 
   delete(): void{
     if (this.carDetails){
-      this.carService.deleteCar(this.carDetails.certificateId, 1)
+      this.certificatesService.deleteCar(this.carDetails.certificateId, 1)
       .subscribe((res) => {
         this.close(true);
       });
