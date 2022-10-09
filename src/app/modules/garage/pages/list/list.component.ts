@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { CreateServiceRequestDialogComponent } from '@modules/garage/dialogs/create-service-request-dialog/create-service-request-dialog.component';
 import { DeleteCarDialogComponent } from '@modules/garage/dialogs/delete-car-dialog/delete-car-dialog.component';
 import { ViewCarDialogComponent } from '@modules/garage/dialogs/view-car-dialog/view-car-dialog.component';
 import { config, finalize, map, Subject, takeUntil } from 'rxjs';
@@ -71,7 +72,7 @@ export class ListComponent implements OnInit , AfterViewInit , OnDestroy{
   }
 
   openDeleteDialog(): void{
-    if (this.selectedcarIdx){
+    if (this.selectedcarIdx != null){
       this.matDialog.open(DeleteCarDialogComponent,{
         width: '550px',
         height: '200px',
@@ -92,7 +93,7 @@ export class ListComponent implements OnInit , AfterViewInit , OnDestroy{
   }
 
   openEditDialog(): void{
-    if (this.selectedcarIdx){
+    if (this.selectedcarIdx != null){
       let data: EditOrViewDialog = {
         id: this.selectedcarIdx,
         edit: true
@@ -104,6 +105,20 @@ export class ListComponent implements OnInit , AfterViewInit , OnDestroy{
       });
     }
 
+  }
+
+  openServiceRequestDialog(): void{
+    //if (this.selectedcarIdx != null){
+      let data: EditOrViewDialog = {
+        id: 0,
+        edit: true
+      }
+      this.matDialog.open(CreateServiceRequestDialogComponent, {
+        width: '750px',
+        height: '500px',
+        data
+      });
+    //}
   }
 
   ngAfterViewInit() {

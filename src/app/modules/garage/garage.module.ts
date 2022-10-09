@@ -7,10 +7,11 @@ import { UserGarageComponent } from './pages/user-garage/user-garage.component';
 import { ListComponent } from './pages/list/list.component';
 import { ViewCarDialogComponent } from './dialogs/view-car-dialog/view-car-dialog.component';
 import { DeleteCarDialogComponent } from './dialogs/delete-car-dialog/delete-car-dialog.component';
+import { CreateServiceRequestDialogComponent } from './dialogs/create-service-request-dialog/create-service-request-dialog.component';
 
 @NgModule({
   declarations: [
-    UserGarageComponent, ListComponent, ViewCarDialogComponent, DeleteCarDialogComponent
+    UserGarageComponent, ListComponent, ViewCarDialogComponent, DeleteCarDialogComponent, CreateServiceRequestDialogComponent
   ],
   imports: [
     CommonModule,

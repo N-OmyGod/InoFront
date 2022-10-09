@@ -1,0 +1,69 @@
+<div class="dialog-wrapper">
+    <div class="dialog-title">
+        <h3>Создание заявки на сервис</h3>
+        <mat-icon (click)="close(false)">close</mat-icon>
+    </div>
+
+    <form class="content" [formGroup]="form">
+        <div class="content-row">
+            <mat-form-field>
+                <mat-label>City</mat-label>
+                <input type="text" matInput formControlName="city">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Dealership</mat-label>
+                <mat-select formControlName="dealerShipId">
+                    <mat-option *ngFor="let dealership of dealerships" [value]="dealership.id">
+                        {{dealership}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Visit reason</mat-label>
+                <mat-select formControlName="visitReasonId">
+                    <mat-option *ngFor="let reason of visitReasons" [value]="reason.id">
+                        {{reason.description}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="content-row">
+            <mat-form-field>
+                <mat-label>Mileage</mat-label>
+                <input type="number" matInput formControlName="mileage">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Service Consultants</mat-label>
+                <mat-select formControlName="serviceConsultantId">
+                    <mat-option *ngFor="let consultant of serviceConsultants" [value]="consultant.id">
+                        {{consultant.firstName + ' ' + consultant.lastName}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Timeslots</mat-label>
+                <mat-select formControlName="timeSlotId">
+                    <mat-option *ngFor="let timeslot of timeslots" [value]="timeslot.id">
+                        {{timeslot.startTime}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="content-row textarea">
+            <label for="">Comment</label>
+            <textarea name="" id="" cols="30" rows="10" formControlName="comment"></textarea>
+        </div>
+    </form>
+
+    <div class="actions">
+        <button mat-raised-button color="primary" (click)="saveServiceRequest()">Да</button>
+        <button mat-raised-button (click)="close(false)">Нет</button>
+    </div>
+
+</div>

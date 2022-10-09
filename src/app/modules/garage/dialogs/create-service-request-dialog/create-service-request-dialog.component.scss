@@ -1,0 +1,51 @@
+.dialog-wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .dialog-title{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: bold;
+
+        mat-icon{
+            cursor: pointer;
+        }
+    }
+
+    .content{
+        display: flex;
+        flex-direction: column;
+
+        .content-row{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            
+
+            &.textarea{
+                display: flex;
+                flex-direction: column;
+                margin-top: 30px;
+                width: 100%;
+
+                label{
+                    margin-bottom: 5px;
+                }
+                textarea{
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .actions{
+        margin: 0 auto;
+        margin-top: 30px;
+        width: 40%;
+        display: flex;
+        justify-content: space-between;
+    }
+}
