@@ -25,7 +25,7 @@ export class CreateServiceRequestDialogComponent implements OnInit, OnDestroy {
   destroyed: Subject<void> = new Subject<void>();
 
   constructor(public dialogRef: MatDialogRef<CreateServiceRequestDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public carId: number,
+    @Inject(MAT_DIALOG_DATA) public carId: any,
     private fb: FormBuilder,
     private service: ServiceRequestService) {
       this.form = this.fb.group({
@@ -40,6 +40,7 @@ export class CreateServiceRequestDialogComponent implements OnInit, OnDestroy {
      }
 
   ngOnInit(): void {
+    this.getUserCity();
     this.loadVisitReasons();
     this.subscribesOnForm();
   }
@@ -78,37 +79,38 @@ export class CreateServiceRequestDialogComponent implements OnInit, OnDestroy {
   }
 
   loadDillerships(city: string): void{
-    this.service.getDealerships(city, this.carId)
+    this.service.getDealerships(city, this.carId.id)
     .subscribe((res)=>{
-      this.dealerships = res.items;
+      console.log(res)
+      this.dealerships = res.result!.items;
     })
   }
 
   loadVisitReasons(): void{
     this.service.getVisitReasons()
     .subscribe((res)=>{
-      this.visitReasons = res.items;
+      this.visitReasons = res.result!.items;
     })
   }
 
   loadServiceConsultants(id: number): void{
     this.service.getServiceConsultants(id)
     .subscribe((res)=>{
-      this.serviceConsultants = res.items;
+      this.serviceConsultants = res.result!.items;
     })
   }
 
   loadTimeslots(id: number): void{
     this.service.getTimeSlots(id)
     .subscribe((res)=>{
-      this.timeslots = res.items;
+      this.timeslots = res.result!.items;
     })
   }
 
   saveServiceRequest(): void{
     if (this.form.valid){
       let body: CreateServiceRequestDto = {
-        carId: this.carId,
+        carId: this.carId.id,
         ...this.form.value
       }
 
@@ -118,6 +120,13 @@ export class CreateServiceRequestDialogComponent implements OnInit, OnDestroy {
       )
       .subscribe()
     }
+  }
+
+  getUserCity():void{
+    this.service.getUserCity().subscribe((res)=>{
+      this.form.get('city')?.patchValue(res.result!)
+    }
+    )
   }
 
   close(value: boolean): void{

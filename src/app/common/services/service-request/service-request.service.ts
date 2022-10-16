@@ -19,22 +19,26 @@ export class ServiceRequestService {
   constructor(private http: HttpClient) { }
 
   createServiceRequest(body: CreateServiceRequestDto): Observable<any>{
+    console.log(body);
     return this.http.post(this.url+'serviceRequests', body);
   }
 
-  getDealerships(city: string, carId: number): Observable<ApiResponse<DealershipModel>>{
-    return this.http.get<ApiResponse<DealershipModel>>(`${this.url}'dealerships/'${city}'/${carId}}`);
+  getUserCity():Observable<ApiResponseMessage<string>>{
+    return this.http.get<ApiResponseMessage<string>>(this.url+'user/city');
+  }
+  getDealerships(city: string, carId: number): Observable<ApiResponseMessage<ApiResponse<DealershipModel>>>{
+    return this.http.get<ApiResponseMessage<ApiResponse<DealershipModel>>>(`${this.url}dealerships/user/${city}/${carId}`);
   }
 
-  getServiceConsultants(dealershipId: number): Observable<ApiResponse<ServiceConsultantModel>>{
-    return this.http.get<ApiResponse<ServiceConsultantModel>>(`${this.url}'dealerships/'${dealershipId}'/consultants}`);
+  getServiceConsultants(dealershipId: number): Observable<ApiResponseMessage<ApiResponse<ServiceConsultantModel>>>{
+    return this.http.get<ApiResponseMessage<ApiResponse<ServiceConsultantModel>>>(`${this.url}dealerships/${dealershipId}/consultants`);
   }
 
-  getVisitReasons(): Observable<ApiResponse<VisitReasonModel>>{
-    return this.http.get<ApiResponse<VisitReasonModel>>(this.url+'visitReasons');
+  getVisitReasons(): Observable<ApiResponseMessage<ApiResponse<VisitReasonModel>>>{
+    return this.http.get<ApiResponseMessage<ApiResponse<VisitReasonModel>>>(this.url+'visitReasons');
   }
 
-  getTimeSlots(serviceConsultantId: number ): Observable<ApiResponse<TimeSlotModel>>{
-    return this.http.get<ApiResponse<TimeSlotModel>>(`${this.url}'serviceConsultants/'${serviceConsultantId}'/time-slots}`);
+  getTimeSlots(serviceConsultantId: number ): Observable<ApiResponseMessage<ApiResponse<TimeSlotModel>>>{
+    return this.http.get<ApiResponseMessage<ApiResponse<TimeSlotModel>>>(`${this.url}serviceConsultants/${serviceConsultantId}/time-slots`);
   }
 }

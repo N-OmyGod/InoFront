@@ -8,14 +8,15 @@
         <div class="content-row">
             <mat-form-field>
                 <mat-label>City</mat-label>
-                <input type="text" matInput formControlName="city">
+                
+                <input readonly="true" type="text" matInput formControlName="city">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Dealership</mat-label>
                 <mat-select formControlName="dealerShipId">
                     <mat-option *ngFor="let dealership of dealerships" [value]="dealership.id">
-                        {{dealership}}
+                        {{dealership.name}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
@@ -49,7 +50,7 @@
                 <mat-label>Timeslots</mat-label>
                 <mat-select formControlName="timeSlotId">
                     <mat-option *ngFor="let timeslot of timeslots" [value]="timeslot.id">
-                        {{timeslot.startTime}}
+                        {{timeslot.timeSlot}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>

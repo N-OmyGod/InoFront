@@ -108,9 +108,9 @@ export class ListComponent implements OnInit , AfterViewInit , OnDestroy{
   }
 
   openServiceRequestDialog(): void{
-    //if (this.selectedcarIdx != null){
+    if (this.selectedcarIdx != null){
       let data: EditOrViewDialog = {
-        id: 0,
+        id: this.selectedcarIdx,
         edit: true
       }
       this.matDialog.open(CreateServiceRequestDialogComponent, {
@@ -118,7 +118,7 @@ export class ListComponent implements OnInit , AfterViewInit , OnDestroy{
         height: '500px',
         data
       });
-    //}
+    }
   }
 
   ngAfterViewInit() {
