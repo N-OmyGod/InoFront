@@ -1,8 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { finalize } from 'rxjs';
-import { VisitReasonTypes } from 'src/app/common/enums/visit-reason-types.enum';
+import { finalize, Subject, takeUntil } from 'rxjs';
 import { CreateServiceRequestDto } from 'src/app/common/interfaces/dto/create-service-request.dto';
 import { DealershipModel } from 'src/app/common/interfaces/models/api-models/dealership.model';
 import { ServiceConsultantModel } from 'src/app/common/interfaces/models/api-models/service-consultant.model';
@@ -15,13 +14,15 @@ import { ServiceRequestService } from 'src/app/common/services/service-request/s
   templateUrl: './create-service-request-dialog.component.html',
   styleUrls: ['./create-service-request-dialog.component.scss']
 })
-export class CreateServiceRequestDialogComponent implements OnInit {
+export class CreateServiceRequestDialogComponent implements OnInit, OnDestroy {
   dealerships: DealershipModel[] = [];
   visitReasons: VisitReasonModel[] = [];
   serviceConsultants: ServiceConsultantModel[] = [];
   timeslots: TimeSlotModel[] = [];
   
   form: FormGroup;
+
+  destroyed: Subject<void> = new Subject<void>();
 
   constructor(public dialogRef: MatDialogRef<CreateServiceRequestDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public carId: number,
@@ -33,15 +34,75 @@ export class CreateServiceRequestDialogComponent implements OnInit {
         mileage: '',
         serviceConsultantId: '',
         timeSlotId: '',
-        comment: ''
+        comment: '',
+        city: ''
       })
      }
 
   ngOnInit(): void {
+    this.loadVisitReasons();
+    this.subscribesOnForm();
   }
 
-  loadCar(): void{
+  subscribesOnForm(): void{
+    this.form.get('city')?.valueChanges
+    .pipe(
+      takeUntil(this.destroyed)
+    )
+    .subscribe((val)=>{
+      if (val){
+        this.loadDillerships(val);
+      }
+    });
 
+    this.form.get('dealerShipId')?.valueChanges
+    .pipe(
+      takeUntil(this.destroyed)
+    )
+    .subscribe((val)=>{
+      if (val){
+        this.loadServiceConsultants(val);
+      }
+    });
+
+    this.form.get('serviceConsultantId')?.valueChanges
+    .pipe(
+      takeUntil(this.destroyed)
+    )
+    .subscribe((val)=>{
+      if (val){
+        this.loadTimeslots(val);
+      }
+    });
+
+  }
+
+  loadDillerships(city: string): void{
+    this.service.getDealerships(city, this.carId)
+    .subscribe((res)=>{
+      this.dealerships = res.items;
+    })
+  }
+
+  loadVisitReasons(): void{
+    this.service.getVisitReasons()
+    .subscribe((res)=>{
+      this.visitReasons = res.items;
+    })
+  }
+
+  loadServiceConsultants(id: number): void{
+    this.service.getServiceConsultants(id)
+    .subscribe((res)=>{
+      this.serviceConsultants = res.items;
+    })
+  }
+
+  loadTimeslots(id: number): void{
+    this.service.getTimeSlots(id)
+    .subscribe((res)=>{
+      this.timeslots = res.items;
+    })
   }
 
   saveServiceRequest(): void{
@@ -57,11 +118,14 @@ export class CreateServiceRequestDialogComponent implements OnInit {
       )
       .subscribe()
     }
-
   }
 
   close(value: boolean): void{
     this.dialogRef.close(value);
   }
 
+  ngOnDestroy(): void {
+    this.destroyed.next();
+    this.destroyed.complete();
+  }
 }

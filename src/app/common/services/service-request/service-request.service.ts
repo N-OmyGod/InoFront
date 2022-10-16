@@ -30,8 +30,8 @@ export class ServiceRequestService {
     return this.http.get<ApiResponse<ServiceConsultantModel>>(`${this.url}'dealerships/'${dealershipId}'/consultants}`);
   }
 
-  getVisitReasons(): Observable<ApiResponseMessage<VisitReasonModel>>{
-    return this.http.get<ApiResponseMessage<VisitReasonModel>>(this.url+'visitReasons');
+  getVisitReasons(): Observable<ApiResponse<VisitReasonModel>>{
+    return this.http.get<ApiResponse<VisitReasonModel>>(this.url+'visitReasons');
   }
 
   getTimeSlots(serviceConsultantId: number ): Observable<ApiResponse<TimeSlotModel>>{
