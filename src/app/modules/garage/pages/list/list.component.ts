@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { CreateCarDialogComponent } from '@modules/garage/dialogs/create-car-dialog/create-car-dialog.component';
 import { CreateServiceRequestDialogComponent } from '@modules/garage/dialogs/create-service-request-dialog/create-service-request-dialog.component';
 import { DeleteCarDialogComponent } from '@modules/garage/dialogs/delete-car-dialog/delete-car-dialog.component';
 import { ViewCarDialogComponent } from '@modules/garage/dialogs/view-car-dialog/view-car-dialog.component';
@@ -102,9 +103,32 @@ export class ListComponent implements OnInit , AfterViewInit , OnDestroy{
         width: '750px',
         height: '500px',
         data
+      }).afterClosed()
+      .pipe(
+        takeUntil(this.destroyed),
+      )
+      .subscribe((result) => {
+        if (result){
+          this.load();
+        }
       });
     }
 
+  }
+
+  openCreateDialog(): void{
+      this.matDialog.open(CreateCarDialogComponent, {
+        width: '460px',
+        height: '280px',
+      }).afterClosed()
+      .pipe(
+        takeUntil(this.destroyed),
+      )
+      .subscribe((result) => {
+        if (result){
+          this.load();
+        }
+      });
   }
 
   openServiceRequestDialog(): void{

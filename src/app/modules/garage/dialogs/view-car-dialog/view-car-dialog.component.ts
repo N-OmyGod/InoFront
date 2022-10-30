@@ -10,6 +10,7 @@ import { ApiCarDetailsModel, DriveType, EngineType, TransmissionType } from 'src
 import { ConverterService } from 'src/app/common/services/converter.service';
 import { GarageService } from 'src/app/common/services/garage/garage.service';
 import { SpinnerService } from 'src/app/common/services/spinner.service';
+import { CreateCarDto } from 'src/app/common/interfaces/dto/creat-car.dto';
 
 @Component({
   selector: 'app-view-car-dialog',
@@ -19,6 +20,8 @@ import { SpinnerService } from 'src/app/common/services/spinner.service';
 export class ViewCarDialogComponent implements OnInit {
   viewTitle = "Параметры автомобиля";
   editTitle = "Технические характеристики автомобиля";
+
+  carCreateMode: boolean = false;
   
   carDetails: ApiCarDetailsModel | null = {
     id: 1,
@@ -60,22 +63,29 @@ export class ViewCarDialogComponent implements OnInit {
      }
 
   ngOnInit(): void {
-    this.loadCar();
+    if (!this.data.certificateId && this.data.certificateId !== 0){
+      this.loadCar();
+      this.carCreateMode = false;
+    } else {
+      this.carCreateMode = true;
+    }
   }
 
   loadCar(): void{
-    this.spinner.show();
-    this.carService.getCarById(this.data.id)
-    .pipe(
-      finalize(()=> {
-        this.spinner.hide();
-      })
-    )
-    .subscribe((res) => {
-      this.carDetails = res;
-      this.convertValues();
-      this.setValuesInForm();
-    });
+    if (this.data.id){
+      this.spinner.show();
+      this.carService.getCarById(this.data.id)
+      .pipe(
+        finalize(()=> {
+          this.spinner.hide();
+        })
+      )
+      .subscribe((res) => {
+        this.carDetails = res;
+        this.convertValues();
+        this.setValuesInForm();
+      });
+    }
   }
 
   convertValues(): void{
@@ -101,9 +111,16 @@ export class ViewCarDialogComponent implements OnInit {
     }
   }
 
-
   save(): void{
-    if (this.form.valid){
+    if (!this.carCreateMode) {
+      this.update();
+    } else {
+      this.create();
+    }
+  }
+
+  update(): void{
+    if (this.form.valid && this.data.id){
       let dto: UpdateCarDto = {
         mark: this.form.get('mark')?.pristine ? null : this.form.get('mark')?.value,
         year: this.form.get('year')?.pristine ? null : this.form.get('year')?.value,
@@ -126,15 +143,34 @@ export class ViewCarDialogComponent implements OnInit {
     }
   }
 
+  create(): void{
+    if (this.form.valid && this.data.certificateId){
+      let dto: CreateCarDto = {
+        carCertificateId: this.data.certificateId,
+        mark: this.form.get('mark')?.value,
+        year: this.form.get('year')?.value,
+        model: this.form.get('model')?.value,
+        mileage: this.form.get('mileage')?.value,
+        transmission: this.form.get('transmission')?.value,
+        drive: this.convertService.convertDriveToString(this.form.get('drive')?.value),
+        engineType: this.convertService.convertEngineToString(this.form.get('engineType')?.value),
+        stateNumber: this.form.get('stateNumber')?.pristine ? null : this.form.get('stateNumber')?.value,
+      }
+
+      this.carService.createCar(dto)
+      .subscribe((res) => {
+        this.close(true);
+      })
+    }
+  }
+
 
   close(success: boolean): void{
     this.dialogRef.close(success);
   }
 
   sendCharacteristics():void{
-    console.log("Hi");
     let dto: CarCharacteristicsRequestDTO={carId: this.carDetails!.id, email: null }
-    console.log(dto);
     this.carService.sendCarCharacteristicsToEmail(dto).subscribe()
   }
 }

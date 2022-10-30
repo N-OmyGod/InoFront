@@ -1,0 +1,38 @@
+<div class="dialog-wrapper">
+    <div class="dialog-title">
+        <h3>{{carCertificateTitle}}</h3>
+        <mat-icon (click)="close(false)">close</mat-icon>
+    </div>
+
+    <form class="content" [formGroup]="certificateForm">
+        <div class="content-row">
+            <mat-form-field>
+                <mat-label>VIN</mat-label>
+                <input type="text" matInput formControlName="VIN">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Seria CTC</mat-label>
+                <input type="text" matInput formControlName="SeriaCTC">
+            </mat-form-field>
+        </div>
+
+        <div class="content-row">
+            <mat-form-field>
+                <mat-label>NumberCTC</mat-label>
+                <input type="text" matInput formControlName="NumberCTC">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>DateCTC</mat-label>
+                <input type="date" matInput formControlName="DateCTC">
+            </mat-form-field>
+        </div>
+    </form>
+
+    <div class="actions">
+        <button mat-raised-button color="primary" (click)="save()">Сохранить</button>
+        <button mat-raised-button (click)="close(false)">Нет</button>
+    </div>
+
+</div>

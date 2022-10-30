@@ -35,7 +35,7 @@
     <div class="actions-wrapper">
         <button mat-raised-button [disabled]="selectedcarIdx == null" (click)="openDeleteDialog()">Удалить</button>
         <button mat-raised-button [disabled]="selectedcarIdx == null" (click)="openEditDialog()">Редактировать</button>
-        <button mat-raised-button>Добавить</button>
+        <button mat-raised-button (click)="openCreateDialog()">Добавить</button>
         <button mat-raised-button (click)="openServiceRequestDialog()">Заявка на сервис</button>
     </div>
 </div>

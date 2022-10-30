@@ -8,10 +8,11 @@ import { ListComponent } from './pages/list/list.component';
 import { ViewCarDialogComponent } from './dialogs/view-car-dialog/view-car-dialog.component';
 import { DeleteCarDialogComponent } from './dialogs/delete-car-dialog/delete-car-dialog.component';
 import { CreateServiceRequestDialogComponent } from './dialogs/create-service-request-dialog/create-service-request-dialog.component';
+import { CreateCarDialogComponent } from './dialogs/create-car-dialog/create-car-dialog.component';
 
 @NgModule({
   declarations: [
-    UserGarageComponent, ListComponent, ViewCarDialogComponent, DeleteCarDialogComponent, CreateServiceRequestDialogComponent
+    UserGarageComponent, ListComponent, ViewCarDialogComponent, DeleteCarDialogComponent, CreateServiceRequestDialogComponent, CreateCarDialogComponent
   ],
   imports: [
     CommonModule,
