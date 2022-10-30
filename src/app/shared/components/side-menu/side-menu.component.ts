@@ -26,7 +26,7 @@ export class SideMenuComponent implements OnInit {
       id: 1,
       path: 'cars',
       title: 'Гараж',
-      active: true
+      active: false
     },
     {
       id: 2,
@@ -40,7 +40,9 @@ export class SideMenuComponent implements OnInit {
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.click(this.activeItemId);
+    console.log(this.activatedRoute.url)
+
+    //this.click(this.activeItemId);
   }
 
   click(id: number): void{

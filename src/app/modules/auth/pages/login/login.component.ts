@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
         (res) =>{
           this.storageService.set('accessToken', res.result!.accessToken)
           this.storageService.set('refreshToken', res.result!.refreshToken)
-          this.router.navigate(['cars']) //переход на другую страницу
+          this.router.navigate(['profile']) //переход на другую страницу
           console.log(res)
         }
       )

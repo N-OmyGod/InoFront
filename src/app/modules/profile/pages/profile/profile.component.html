@@ -1,1 +1,62 @@
-<p>profile works!</p>
+<div class="profile-wrapper">
+    <div class="wrapper">
+        <form class="form" [formGroup]="form">
+            <span class="title">Настройка профиля</span>
+
+            <div class="profile">
+                <mat-icon>account_circle</mat-icon>
+            </div>
+
+            <div class="form-fields">
+                <mat-form-field>
+                    <mat-label>Firstname</mat-label>
+                    <input type="text" matInput formControlName="firstName">
+                </mat-form-field>
+    
+                <mat-form-field>
+                    <mat-label>Lastname</mat-label>
+                    <input type="text" matInput formControlName="lastname">
+                </mat-form-field>
+    
+                <mat-form-field>
+                    <mat-label>Patronymic</mat-label>
+                    <input type="text" matInput formControlName="patronymic">
+                </mat-form-field>
+    
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input type="text" matInput formControlName="email" [readonly]="true">
+                </mat-form-field>
+    
+                <mat-form-field>
+                    <mat-label>Date Birth</mat-label>
+                    <input type="date" matInput formControlName="dateBirth">
+                </mat-form-field>
+    
+                <mat-form-field>
+                    <mat-label>City</mat-label>
+                    <input type="text" matInput formControlName="city">
+                </mat-form-field>
+            </div>
+        </form>
+
+        <div class="actions">
+            <div class="row center" *ngIf="!editMode">
+                <button mat-raised-button color="primary" (click)="changeMode(true)">Редактировать</button>
+            </div>
+            <div class="row" *ngIf="editMode">
+                <button mat-raised-button color="primary" (click)="updateProfile()">Сохранить</button>
+                <button mat-raised-button (click)="changeMode(false)">Отмена</button>
+            </div>
+
+            <div class="row">
+                <button mat-button color="primary" (click)="logout()">Выйти</button>
+                <button mat-button color="primary">Сменить пароль</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-image">
+        <img src="assets/images/bg-shapes.svg" alt="">
+    </div>
+</div>

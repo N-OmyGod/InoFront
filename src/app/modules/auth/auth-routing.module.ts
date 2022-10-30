@@ -7,7 +7,7 @@ import { RegistrationComponent } from './pages/registration/registration.compone
 
 const routes: Routes = [
   {path:'', component:LoginComponent},
-  {path: 'sign-in', component:RegistrationComponent},
+  {path: 'sign-up', component:RegistrationComponent},
   {path: 'confirm', component:ConfirmAccountComponent},
   {path: 'add-password', component:PasswordComponent}
 ];

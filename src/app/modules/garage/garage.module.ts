@@ -12,7 +12,12 @@ import { CreateCarDialogComponent } from './dialogs/create-car-dialog/create-car
 
 @NgModule({
   declarations: [
-    UserGarageComponent, ListComponent, ViewCarDialogComponent, DeleteCarDialogComponent, CreateServiceRequestDialogComponent, CreateCarDialogComponent
+    UserGarageComponent, 
+    ListComponent, 
+    ViewCarDialogComponent, 
+    DeleteCarDialogComponent, 
+    CreateServiceRequestDialogComponent, 
+    CreateCarDialogComponent
   ],
   imports: [
     CommonModule,

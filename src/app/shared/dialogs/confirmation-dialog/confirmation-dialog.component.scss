@@ -7,6 +7,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        font-weight: bold;
 
         mat-icon{
             cursor: pointer;
@@ -21,13 +22,14 @@
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+            
         }
     }
 
     .actions{
         margin: 0 auto;
         margin-top: 30px;
-        width: 70%;
+        width: 40%;
         display: flex;
         justify-content: space-between;
     }

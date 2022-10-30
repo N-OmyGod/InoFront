@@ -15,11 +15,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import { ConfirmationDialogComponent } from './dialogs/confirmation-dialog/confirmation-dialog.component';
 @NgModule({
   declarations: [
     HeaderComponent,
     SideMenuComponent,
-    InputComponent
+    InputComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     CommonModule,
