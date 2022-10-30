@@ -3,6 +3,6 @@ export interface ProfileModel{
     lastName: string;
     patronymic?: string;
     email: string;
-    dateBirth: Date;
+    dateBirth: string;
     city?: string;
 }

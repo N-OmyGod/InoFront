@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ProfileModel } from 'src/app/common/interfaces/models/api-models/profile.model';
 import { ProfileService } from 'src/app/common/services/profile/profile.service';
 
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -35,9 +36,13 @@ export class ProfileComponent implements OnInit {
   loadProfile(): void{
     this.service.getUserProfile()
     .subscribe((res)=>{
-      if (res.isSucces && res.result){
+      if (res.isSuccess && res.result){
+        
+       
+
         this.profileModel = res.result;
         this.form.patchValue(res.result);
+       
       }
     })
   }
@@ -48,7 +53,7 @@ export class ProfileComponent implements OnInit {
 
       this.service.updateProfile(body)
       .subscribe((res) => {
-        if (res.isSucces){
+        if (res.isSuccess){
           this.loadProfile();
         }
       })

@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { ConfirmationDialogComponent } from './dialogs/confirmation-dialog/confirmation-dialog.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -37,7 +38,8 @@ import { ConfirmationDialogComponent } from './dialogs/confirmation-dialog/confi
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule
   ], 
   exports: [
     HeaderComponent,
@@ -55,7 +57,8 @@ import { ConfirmationDialogComponent } from './dialogs/confirmation-dialog/confi
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule
   ]
 })
 export class SharedModule { }
