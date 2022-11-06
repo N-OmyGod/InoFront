@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProfileService } from 'src/app/common/services/profile/profile.service';
+import { StorageService } from 'src/app/common/services/storage.service';
 
 export interface SideMenuItem{
   id: number,
@@ -37,7 +39,8 @@ export class SideMenuComponent implements OnInit {
   ];
 
   constructor(private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private service: ProfileService) { }
 
   ngOnInit(): void {
     console.log(this.activatedRoute.url)
@@ -55,6 +58,11 @@ export class SideMenuComponent implements OnInit {
       this.router.navigate(['', item.path])
     }
 
+  }
+
+  logout(): void{
+    this.service.logout();
+    this.router.navigate(['/', 'auth']);
   }
 
 }

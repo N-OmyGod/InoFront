@@ -4,6 +4,30 @@
     // width: 150px;
     height: 100%;
     border-right: 1px solid gray;
+    box-shadow: 2px 1px 5px 1px rgba(34, 60, 80, 0.6);
+    background: #3f51b5;
+    color: white;
+
+    .logo{
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 90px;
+        width: 100%;
+        cursor: pointer;
+
+        img{
+            width: 100px;
+            height: 80px;
+            margin-right: 10px;
+        }
+
+        span{
+            font-size: 23pt;
+            font-family: monospace;
+        }
+    }
 
     .side-menu-item{
         display: flex;
@@ -25,5 +49,20 @@
             background-color: rgba($color: #79ceff, $alpha: 0.3);
         }
 
+    }
+
+    .logout-wrapper{
+        display: flex;
+        justify-content: center;
+        margin-top: auto;
+        padding-bottom: 30px;
+        cursor: pointer;
+
+        mat-icon{
+            font-size: 22pt;
+            height: auto;
+            width: auto;
+
+        }
     }
 }

@@ -1,4 +1,8 @@
 <div class="side-menu-wrapper">
+    <div class="logo">
+        <img src="assets/images/logo.png" alt="">
+        <span>InoCar</span>
+    </div>
     <div *ngFor="let item of items">
         <div class="side-menu-item" 
             [ngClass]="{'active': item.active}" 
@@ -7,4 +11,9 @@
             <span>{{item.title}}</span>
         </div>
     </div>
+    
+    <div class="logout-wrapper">
+        <mat-icon matTooltip="Выйти" (click)="logout()">logout</mat-icon>
+    </div>
+
 </div>

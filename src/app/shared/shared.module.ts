@@ -17,12 +17,14 @@ import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { ConfirmationDialogComponent } from './dialogs/confirmation-dialog/confirmation-dialog.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { PageHeaderComponent } from './components/page-header/page-header.component';
 @NgModule({
   declarations: [
     HeaderComponent,
     SideMenuComponent,
     InputComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    PageHeaderComponent
   ],
   imports: [
     CommonModule,
@@ -44,6 +46,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
   exports: [
     HeaderComponent,
     SideMenuComponent,
+    PageHeaderComponent,
     ReactiveFormsModule,
     FormsModule,
 
