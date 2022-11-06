@@ -32,7 +32,7 @@ export class SideMenuComponent implements OnInit {
     },
     {
       id: 2,
-      path: 'dillerships',
+      path: 'dealerships',
       title: 'Диллерские центры',
       active: false
     }
