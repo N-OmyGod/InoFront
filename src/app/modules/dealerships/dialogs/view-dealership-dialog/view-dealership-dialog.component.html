@@ -1,0 +1,57 @@
+<div class="dialog-wrapper">
+    <div class="dialog-title">
+        <h3>Диллерский центр</h3>
+        <mat-icon (click)="close()">close</mat-icon>
+    </div>
+    <ng-container>
+      <div class="content" >
+        <div class="content-row">
+            <mat-form-field>
+                <mat-label>Brand</mat-label>
+                <input matInput placeholder="Just a placeholder" [value]="dealership?.brand" [disabled]="true">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Just a placeholder" [value]="dealership?.name" [disabled]="true">
+              </mat-form-field>
+
+              <mat-form-field [matTooltip]="dealership!.address">
+                <mat-label>Address</mat-label>
+                <input matInput placeholder="Just a placeholder" 
+                     [value]="dealership?.address" [disabled]="true">
+              </mat-form-field>
+        </div>
+
+        <div class="content-row">
+            <mat-form-field>
+                <mat-label>Operator Num</mat-label>
+                <input matInput placeholder="Just a placeholder" [value]="dealership?.operatorNum" [disabled]="true">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Opening Time</mat-label>
+                <input 
+                    matInput 
+                    placeholder="Just a placeholder" 
+                    [value]="dealership?.openingTime | date: 'H:mm'" 
+                    [disabled]="true">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Closing Time</mat-label>
+                <input 
+                    matInput 
+                    placeholder="Just a placeholder" 
+                    [value]="dealership?.closingTime | date: 'H:mm'" 
+                    [disabled]="true">
+              </mat-form-field>
+        </div>
+    </div>
+    <!-- <div class="actions">
+        <button mat-raised-button (click)="close()">Ok</button>
+      </div> -->
+    </ng-container>
+
+    
+</div>

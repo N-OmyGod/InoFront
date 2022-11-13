@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ViewDealershipDialogComponent } from '@modules/dealerships/dialogs/view-dealership-dialog/view-dealership-dialog.component';
+import { Dealerships } from 'src/app/common/constants/dealerships';
 import { ApiDealershipModel } from 'src/app/common/interfaces/models/api-dealership.model';
 import { DealershipService } from 'src/app/common/services/dealership/dealership.service';
 
@@ -8,23 +11,14 @@ import { DealershipService } from 'src/app/common/services/dealership/dealership
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  dealerships: ApiDealershipModel[] = [
-    // {
-    //   id: 1,
-    //   brand: 'BMW',
-    //   address: 'Taganrog streeet Frounze 23 house 234',
-    //   openingTime: new Date(),
-    //   closingTime: new Date(),
-    //   name: 'BMW Dealership',
-    //   operatorNum: 'XZ'
-    // }
-  ];
+  dealerships = Dealerships;
   displayedColumns = ['brand', 'name', 'address', 'operatorNum', 'openingTime', 'closingTime'];
 
-  constructor(private service: DealershipService) { }
+  constructor(private service: DealershipService,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.loadData();
+    //this.loadData();
   }
 
   loadData(): void {
@@ -32,6 +26,14 @@ export class ListComponent implements OnInit {
     .subscribe((res) => {
       this.dealerships = res.items;
     });
+  }
+
+  openViewDialog(id: number): void{
+    this.dialog.open(ViewDealershipDialogComponent, {
+      width: '620px',
+      height: '210px',
+      data: id
+    })
   }
 
 }
