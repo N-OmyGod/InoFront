@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { RegistrationDto } from 'src/app/common/interfaces/dto/registration.dto';
 import { AuthService } from 'src/app/common/services/auth/auth.service';
 
@@ -14,11 +15,12 @@ export class RegistrationComponent implements OnInit {
   
   constructor(private fB: FormBuilder,
     private authService: AuthService,
-    private router:Router ) {
+    private router:Router,
+    private toastr: ToastrService) {
     this.form = this.fB.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      patronymic: '',
+      firstName: ['', Validators.compose([Validators.required, Validators.maxLength(50)])],
+      lastName: ['', Validators.compose([Validators.required, Validators.maxLength(50)])],
+      patronymic: ['', Validators.maxLength(50)],
       email: ['', Validators.compose([Validators.email, Validators.required])],
       dateBirth: ['', Validators.required],
       city: ['', Validators.required],
@@ -40,7 +42,8 @@ export class RegistrationComponent implements OnInit {
         }
       )
     } else {
-      console.log('Form is not valid')
+      console.log('Form is not valid');
+      this.toastr.error('Invalid')
     }
 
   }

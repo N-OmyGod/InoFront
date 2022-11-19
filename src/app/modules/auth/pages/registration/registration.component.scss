@@ -16,6 +16,8 @@
 
         .form{
             width: 300px;
+            display: flex;
+            flex-direction: column;
 
             span{
                 &.title{
@@ -23,6 +25,13 @@
                     font-weight: bold;
                 }
             }
+
+            mat-form-field{
+                mat-error{
+                    margin-bottom: 10px;
+                }
+            }
+
 
             .form-control-wrapper{
                 display: flex;

@@ -2,30 +2,58 @@
     <div class="wrapper">
         <form class="form" [formGroup]="form" (submit)="submit()">
             <span class="title">Добро пожаловать!</span>
-            <div class="form-control-wrapper">
-                <span>Имя</span>
-                <input type="text" class="form-input" placeholder="Введите имя" formControlName="firstName">
-            </div>
-            <div class="form-control-wrapper">
-                <span>Фамилия</span>
-                <input type="text" class="form-input" placeholder="Введите фамилию" formControlName="lastName">
-            </div>
-            <div class="form-control-wrapper">
-                <span>Отчество</span>
-                <input type="text" class="form-input" placeholder="Введите отчество" formControlName="patronymic">
-            </div>
-            <div class="form-control-wrapper">
-                <span>Email</span>
-                <input type="text" class="form-input" placeholder="Введите email" formControlName="email">
-            </div>
-            <div class="form-control-wrapper">
-                <span>Дата рождения</span>
-                <input type="date" class="form-input" formControlName="dateBirth">
-            </div>
-            <div class="form-control-wrapper">
-                <span>Город</span>
-                <input type="text" class="form-input" placeholder="Введите город" formControlName="city">
-            </div>
+
+            <mat-form-field>
+                <mat-label>Имя *</mat-label>
+                <input type="text" matInput class="form-input" placeholder="Введите имя" formControlName="firstName">
+                <mat-error>
+                    Это поле обязятельно для заполнения. <br>
+                    Максимальная длина 50 символов
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Фамилия *</mat-label>
+                <input type="text" matInput class="form-input" placeholder="Введите фамилию" formControlName="lastName">
+                <mat-error>
+                    Это поле обязятельно для заполнения. <br>
+                    Максимальная длина 50 символов
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Отчество</mat-label>
+                <input type="text" matInput class="form-input" placeholder="Введите отчество" formControlName="patronymic">
+                <mat-error>
+                    Максимальная длина 50 символов
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Email *</mat-label>
+                <input type="text" matInput class="form-input" placeholder="Введите email" formControlName="email">
+                <mat-error>
+                    Это поле обязательно для заполнения. <br>
+                    Формат электронной почты "example@example.com"
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Дата рождения</mat-label>
+                <input type="date" matInput class="form-input" formControlName="dateBirth">
+                <mat-error>
+                    Это поле обязательно для заполнения.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Город</mat-label>
+                <input type="text" matInput class="form-input" placeholder="Введите город" formControlName="city">
+                <mat-error>
+                    Это поле обязательно для заполнения.
+                </mat-error>
+            </mat-form-field>
+
             <div class="form-control-wrapper">
                 <input type="submit" value="Подтвердить регистрацию по email" class="submit">
                 <div>

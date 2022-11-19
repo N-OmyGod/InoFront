@@ -12,15 +12,22 @@ import { StorageService } from 'src/app/common/services/storage.service';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
+
+  showPassword: boolean = false;
   
   constructor(private fB: FormBuilder,
     private authService: AuthService,
     private storageService: StorageService,
     private router:Router ) {
     this.form = this.fB.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      password: ['', Validators.compose([Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])\S{8,15}$/)])],
     })
+   }
+
+   get passwordIsValid(): boolean{
+    const password = this.form.get('password');
+    return !(password!.invalid && (password!.dirty || password!.touched))
    }
 
   ngOnInit(): void {
