@@ -1,5 +1,5 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { finalize, Subject, takeUntil } from 'rxjs';
 import { CreateServiceRequestDto } from 'src/app/common/interfaces/dto/create-service-request.dto';
@@ -34,10 +34,15 @@ export class CreateServiceRequestDialogComponent implements OnInit, OnDestroy {
         mileage: '',
         serviceConsultantId: '',
         timeSlotId: '',
-        comment: '',
-        city: ''
+        comment: ['', Validators.maxLength(1000)],
+        city: ['', Validators.maxLength(50)],
       })
      }
+
+  get commentIsValid(): boolean{
+    const comment = this.form.get('comment');
+    return !(comment!.invalid && (comment!.dirty || comment!.touched))
+  }
 
   ngOnInit(): void {
     this.getUserCity();

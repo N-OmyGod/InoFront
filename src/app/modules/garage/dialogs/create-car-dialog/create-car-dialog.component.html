@@ -9,11 +9,17 @@
             <mat-form-field>
                 <mat-label>VIN</mat-label>
                 <input type="text" matInput formControlName="VIN">
+                <mat-error>
+                    Неправильный формат VIN
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Seria CTC</mat-label>
                 <input type="text" matInput formControlName="SeriaCTC">
+                <mat-error>
+                    Неправильный формат: 00XX
+                </mat-error>
             </mat-form-field>
         </div>
 
@@ -21,11 +27,17 @@
             <mat-form-field>
                 <mat-label>NumberCTC</mat-label>
                 <input type="text" matInput formControlName="NumberCTC">
+                <mat-error>
+                    Неправильный формат номера СТС, должно быть 6 цифр
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>DateCTC</mat-label>
                 <input type="date" matInput formControlName="DateCTC">
+                <mat-error>
+                    Обязательное поле
+                </mat-error>
             </mat-form-field>
         </div>
     </form>

@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { finalize } from 'rxjs';
 import { CarDriveConsts, CarEngineConsts, CarTransmissionConsts } from 'src/app/common/constants/car-details.const';
@@ -51,14 +51,14 @@ export class ViewCarDialogComponent implements OnInit {
     private convertService: ConverterService,
     private fb: FormBuilder) {
       this.form = this.fb.group({
-        year: [''],
-        mark: [''],
-        model: [''],
-        stateNumber: [''],
+        year: ['' , Validators.required],
+        mark: ['', Validators.required],
+        model: ['' , Validators.required],
+        stateNumber: ['', Validators.compose([Validators.required, Validators.pattern(/^[АВЕКМНОРСТУХ]\d{3}[АВЕКМНОРСТУХ]{2}\d{2,3}/)])],
         transmission: [''],
         engineType: [''],
         drive: [''],
-        mileage: [''],
+        mileage: ['', Validators.required],
       })
      }
 

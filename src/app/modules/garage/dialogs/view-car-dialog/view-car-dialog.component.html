@@ -72,16 +72,25 @@
           <mat-form-field>
               <mat-label>Mark</mat-label>
               <input matInput placeholder="Just a placeholder" formControlName="mark">
+              <mat-error>
+                Поле обязательное
+            </mat-error>
             </mat-form-field>
   
             <mat-form-field>
               <mat-label>Model</mat-label>
               <input matInput placeholder="Just a placeholder" formControlName="model">
+              <mat-error>
+                Поле обязательное
+            </mat-error>
             </mat-form-field>
   
             <mat-form-field>
               <mat-label>Year</mat-label>
               <input matInput placeholder="Just a placeholder" formControlName="year">
+              <mat-error>
+                Поле обязательное
+            </mat-error>
             </mat-form-field>
       </div>
       <div class="content-row">
@@ -116,12 +125,18 @@
           <mat-form-field>
               <mat-label>Mileage</mat-label>
               <input matInput placeholder="Just a placeholder" formControlName="mileage">
-            </mat-form-field>
+              <mat-error>
+                Поле обязательное
+            </mat-error>
+          </mat-form-field>
   
-            <mat-form-field>
+          <mat-form-field>
               <mat-label>State Number</mat-label>
               <input matInput placeholder="Just a placeholder" formControlName="stateNumber">
-            </mat-form-field>
+              <mat-error>
+                Неправильный формат номера: 'A000АА000' или 'A000АА00'
+            </mat-error>
+          </mat-form-field>
       </div>
       </form>
 
