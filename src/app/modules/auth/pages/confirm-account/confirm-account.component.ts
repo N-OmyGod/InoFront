@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Toast, ToastrService } from 'ngx-toastr';
 import { AddUserCodeDto } from 'src/app/common/interfaces/dto/code.dto';
 import { AuthService } from 'src/app/common/services/auth/auth.service';
 import { StorageService } from 'src/app/common/services/storage.service';
@@ -16,7 +17,8 @@ export class ConfirmAccountComponent implements OnInit {
   constructor(private fB: FormBuilder,
     private authService: AuthService,
     private router:Router,
-    private storageService: StorageService) {
+    private storageService: StorageService,
+    private toastr: ToastrService) {
     this.form = this.fB.group({
       code: ['', Validators.required],
     })
@@ -38,6 +40,10 @@ export class ConfirmAccountComponent implements OnInit {
         (res) =>{
           this.router.navigate(['add-password']) //переход на другую страницу
           console.log(res)
+        },
+        err=>{
+          this.toastr.error(err.error);
+          console.log(err)
         }
       )
     } else {

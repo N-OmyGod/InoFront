@@ -34,7 +34,14 @@ export class LoginComponent implements OnInit {
     let token = this.storageService.get('accessToken');
 
     if (token && token != '')
+    {
+      this.authService.showText.next(false);
       this.router.navigate(['cars']);
+    
+    }
+      else{
+           this.authService.showText.next(true);
+      }
   }
 
   submit(): void{

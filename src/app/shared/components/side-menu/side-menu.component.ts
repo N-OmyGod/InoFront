@@ -48,7 +48,12 @@ export class SideMenuComponent implements OnInit {
 
   ngOnInit(): void {
    // let token = this.storage.get('accessToken');
-    this.authService.showText.subscribe((value)=>this.showRoutes=!value);
+this.authService.showText.subscribe((value)=>
+{
+  console.log(value);
+  this.showRoutes=!value
+
+});
   //  this.showRoutes = token && token !== '' ? true: false;
   }
 
@@ -66,6 +71,7 @@ export class SideMenuComponent implements OnInit {
 
   logout(): void{
     this.service.logout();
+    this.authService.showText.next(true);
     this.router.navigate(['/', 'auth']);
   }
 
