@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { RegistrationDto } from 'src/app/common/interfaces/dto/registration.dto';
 import { AuthService } from 'src/app/common/services/auth/auth.service';
+import { StorageService } from 'src/app/common/services/storage.service';
 
 @Component({
   selector: 'app-registration',
@@ -16,7 +17,8 @@ export class RegistrationComponent implements OnInit {
   constructor(private fB: FormBuilder,
     private authService: AuthService,
     private router:Router,
-    private toastr: ToastrService) {
+    private toastr: ToastrService,
+    private storageService: StorageService) {
     this.form = this.fB.group({
       firstName: ['', Validators.compose([Validators.required, Validators.maxLength(50)])],
       lastName: ['', Validators.compose([Validators.required, Validators.maxLength(50)])],
@@ -28,6 +30,9 @@ export class RegistrationComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    let token = this.storageService.get('accessToken');
+    if (token && token != '')
+      this.router.navigate(['cars']);
   }
 
   submit(): void{

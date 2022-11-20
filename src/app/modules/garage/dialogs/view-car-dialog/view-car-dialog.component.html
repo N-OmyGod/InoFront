@@ -7,23 +7,23 @@
       <div class="content" >
         <div class="content-row">
             <mat-form-field>
-                <mat-label>Mark</mat-label>
+                <mat-label>Марка</mat-label>
                 <input matInput placeholder="Just a placeholder" [value]="carDetails?.mark" [disabled]="true">
               </mat-form-field>
 
               <mat-form-field>
-                <mat-label>Model</mat-label>
+                <mat-label>Модель</mat-label>
                 <input matInput placeholder="Just a placeholder" [value]="carDetails?.model" [disabled]="true">
               </mat-form-field>
 
               <mat-form-field>
-                <mat-label>Year</mat-label>
+                <mat-label>Год</mat-label>
                 <input matInput placeholder="Just a placeholder" [value]="carDetails!.year" [disabled]="true">
               </mat-form-field>
         </div>
         <div class="content-row">
             <mat-form-field>
-                <mat-label>Transmission</mat-label>
+                <mat-label>Трансмиссия</mat-label>
                 <mat-select [(value)]="carDetails!.transmission" [disabled]="true">
                     <mat-option *ngFor="let transmission of transmissions" [value]="transmission.type">
                       {{transmission.value}}
@@ -32,7 +32,7 @@
             </mat-form-field>
 
             <mat-form-field>
-                <mat-label>Engine type</mat-label>
+                <mat-label>Тив двигателя</mat-label>
                 <mat-select [(value)]="carDetails!.engineType" [disabled]="true">
                     <mat-option *ngFor="let engine of engines" [value]="engine.type">
                       {{engine.value}}
@@ -41,7 +41,7 @@
             </mat-form-field>
 
             <mat-form-field>
-                <mat-label>Drive type</mat-label>
+                <mat-label>Привод</mat-label>
                 <mat-select [(value)]="carDetails!.drive" [disabled]="true">
                     <mat-option *ngFor="let drive of drives" [value]="drive.type">
                       {{drive.value}}
@@ -51,12 +51,12 @@
         </div>
         <div class="content-row">
             <mat-form-field>
-                <mat-label>Mileage</mat-label>
+                <mat-label>Пробег</mat-label>
                 <input matInput placeholder="Just a placeholder" [value]="carDetails?.mileage" [disabled]="true">
               </mat-form-field>
 
               <mat-form-field>
-                <mat-label>State Number</mat-label>
+                <mat-label>Гос. номер</mat-label>
                 <input matInput placeholder="Just a placeholder" [value]="carDetails?.stateNumber" [disabled]="true">
               </mat-form-field>
         </div>
@@ -70,7 +70,7 @@
       <form  class="content" action="" [formGroup]="form">
         <div class="content-row">
           <mat-form-field>
-              <mat-label>Mark</mat-label>
+              <mat-label>Марка</mat-label>
               <input matInput placeholder="Just a placeholder" formControlName="mark">
               <mat-error>
                 Поле обязательное
@@ -78,7 +78,7 @@
             </mat-form-field>
   
             <mat-form-field>
-              <mat-label>Model</mat-label>
+              <mat-label>Модель</mat-label>
               <input matInput placeholder="Just a placeholder" formControlName="model">
               <mat-error>
                 Поле обязательное
@@ -86,7 +86,7 @@
             </mat-form-field>
   
             <mat-form-field>
-              <mat-label>Year</mat-label>
+              <mat-label>Год</mat-label>
               <input matInput placeholder="Just a placeholder" formControlName="year">
               <mat-error>
                 Поле обязательное
@@ -95,7 +95,7 @@
       </div>
       <div class="content-row">
           <mat-form-field>
-              <mat-label>Transmission</mat-label>
+              <mat-label>Трансмиссия</mat-label>
               <mat-select formControlName="transmission">
                   <mat-option *ngFor="let transmission of transmissions" [value]="transmission.type">
                     {{transmission.value}}
@@ -104,7 +104,7 @@
           </mat-form-field>
   
           <mat-form-field>
-              <mat-label>Engine type</mat-label>
+              <mat-label>Тип двигателя</mat-label>
               <mat-select formControlName="engineType">
                   <mat-option *ngFor="let engine of engines" [value]="engine.type">
                     {{engine.value}}
@@ -113,7 +113,7 @@
           </mat-form-field>
   
           <mat-form-field>
-              <mat-label>Drive type</mat-label>
+              <mat-label>Привод</mat-label>
               <mat-select formControlName="drive">
                   <mat-option *ngFor="let drive of drives" [value]="drive.type">
                     {{drive.value}}
@@ -123,7 +123,7 @@
       </div>
       <div class="content-row">
           <mat-form-field>
-              <mat-label>Mileage</mat-label>
+              <mat-label>Пробег</mat-label>
               <input matInput placeholder="Just a placeholder" formControlName="mileage">
               <mat-error>
                 Поле обязательное
@@ -131,7 +131,7 @@
           </mat-form-field>
   
           <mat-form-field>
-              <mat-label>State Number</mat-label>
+              <mat-label>Гос. номер</mat-label>
               <input matInput placeholder="Just a placeholder" formControlName="stateNumber">
               <mat-error>
                 Неправильный формат номера: 'A000АА000' или 'A000АА00'

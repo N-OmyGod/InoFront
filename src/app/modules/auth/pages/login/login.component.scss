@@ -10,6 +10,7 @@
         padding-top: 30px;
         width: 70%;
         height: fit-content;
+        margin-top: 160px;
 
         .form{
             width: 300px;
@@ -20,10 +21,13 @@
                 &.title{
                     font-size: 22pt;
                     font-weight: bold;
+                    color: #00a1df;
                 }
 
                 &.subtitle{
+                    margin-top: 20px;
                     color: #9dafc2;
+                    margin-bottom: 10px;
                 }
             }
 
@@ -31,6 +35,7 @@
                 &.error{
                     margin-bottom: 30px;
                 }
+                margin-bottom: 20px;
             }
 
             .form-control-wrapper{
@@ -54,6 +59,10 @@
                             cursor: pointer;
                         }
                     }
+                }
+
+                button{
+                    margin-bottom: 10px;
                 }
 
             }

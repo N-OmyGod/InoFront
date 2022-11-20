@@ -7,7 +7,7 @@
     <form class="content" [formGroup]="form">
         <div class="content-row">
             <mat-form-field>
-                <mat-label>City</mat-label>
+                <mat-label>Город</mat-label>
                 <input readonly="true" type="text" matInput formControlName="city">
                 <mat-error>
                     Максимальная длина: 50 символов
@@ -15,7 +15,7 @@
             </mat-form-field>
 
             <mat-form-field>
-                <mat-label>Dealership</mat-label>
+                <mat-label>Дилерский центр</mat-label>
                 <mat-select formControlName="dealerShipId">
                     <mat-option *ngFor="let dealership of dealerships" [value]="dealership.id">
                         {{dealership.name}}
@@ -24,7 +24,7 @@
             </mat-form-field>
 
             <mat-form-field>
-                <mat-label>Visit reason</mat-label>
+                <mat-label>Причина визита</mat-label>
                 <mat-select formControlName="visitReasonId">
                     <mat-option *ngFor="let reason of visitReasons" [value]="reason.id">
                         {{reason.description}}
@@ -35,12 +35,12 @@
 
         <div class="content-row">
             <mat-form-field>
-                <mat-label>Mileage</mat-label>
+                <mat-label>Пробег</mat-label>
                 <input type="number" matInput formControlName="mileage">
             </mat-form-field>
 
             <mat-form-field>
-                <mat-label>Service Consultants</mat-label>
+                <mat-label>Консультанты</mat-label>
                 <mat-select formControlName="serviceConsultantId">
                     <mat-option *ngFor="let consultant of serviceConsultants" [value]="consultant.id">
                         {{consultant.firstName + ' ' + consultant.lastName}}
@@ -49,7 +49,7 @@
             </mat-form-field>
 
             <mat-form-field>
-                <mat-label>Timeslots</mat-label>
+                <mat-label>Время</mat-label>
                 <mat-select formControlName="timeSlotId">
                     <mat-option *ngFor="let timeslot of timeslots" [value]="timeslot.id">
                         {{timeslot.timeSlot}}
@@ -59,7 +59,7 @@
         </div>
 
         <div class="content-row textarea">
-            <label for="">Comment</label>
+            <label for="">Комментарий</label>
             <textarea name="" id="" cols="30" rows="10" formControlName="comment" placeholder="Максимальная длина: 1000 символов"></textarea>
             <mat-error *ngIf="!commentIsValid">
                 Максимальная длина: 1000 символов

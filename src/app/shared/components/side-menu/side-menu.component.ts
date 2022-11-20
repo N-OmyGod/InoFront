@@ -16,6 +16,7 @@ export interface SideMenuItem{
 })
 export class SideMenuComponent implements OnInit {
   activeItemId: number = 1;
+  showRoutes: boolean = false;
 
   items: SideMenuItem[] = [
     {
@@ -33,19 +34,19 @@ export class SideMenuComponent implements OnInit {
     {
       id: 2,
       path: 'dealerships',
-      title: 'Диллерские центры',
+      title: 'Дилерские центры',
       active: false
     }
   ];
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
-    private service: ProfileService) { }
+    private service: ProfileService,
+    private storage: StorageService) { }
 
   ngOnInit(): void {
-    console.log(this.activatedRoute.url)
-
-    //this.click(this.activeItemId);
+    let token = this.storage.get('accessToken');
+    this.showRoutes = token && token !== '' ? true: false;
   }
 
   click(id: number): void{

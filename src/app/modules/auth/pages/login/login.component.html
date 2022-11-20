@@ -1,7 +1,7 @@
 <div class="login-wrapper">
     <div class="wrapper">
-        <form class="form" [formGroup]="form" (submit)="submit()">
-            <span class="title">Добро пожаловать!</span>
+        <form class="form" [formGroup]="form">
+            <span class="title">Вход в систему</span>
             <span class="subtitle">Сервис InoCar для вашего автомобиля</span>
 
             <mat-form-field>
@@ -24,7 +24,8 @@
             </mat-form-field>
 
             <div class="form-control-wrapper">
-                <input type="submit" value="Войти" class="submit">
+                <!-- <input type="submit" value="Войти" class="submit"> -->
+                <button mat-raised-button (click)="submit()">Войти</button>
                 <div>
                     Еще не зарегистрированы? <a href="sign-up">Регистрация</a>
                 </div>

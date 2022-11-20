@@ -31,6 +31,10 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    let token = this.storageService.get('accessToken');
+
+    if (token && token != '')
+      this.router.navigate(['cars']);
   }
 
   submit(): void{
@@ -41,8 +45,7 @@ export class LoginComponent implements OnInit {
         (res) =>{
           this.storageService.set('accessToken', res.result!.accessToken)
           this.storageService.set('refreshToken', res.result!.refreshToken)
-          this.router.navigate(['profile']) //переход на другую страницу
-          console.log(res)
+          this.router.navigate(['']) //переход на другую страницу
         }
       )
     } else {

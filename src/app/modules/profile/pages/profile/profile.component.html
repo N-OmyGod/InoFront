@@ -1,6 +1,6 @@
 <div class="profile-wrapper">
+    <app-page-header title="Настройка профиля"></app-page-header>
     <div class="wrapper">
-        <app-page-header title="Настройка профиля"></app-page-header>
         <form class="form" [formGroup]="form">
             <div class="profile">
                 <mat-icon>account_circle</mat-icon>
@@ -8,17 +8,17 @@
 
             <div class="form-fields">
                 <mat-form-field>
-                    <mat-label>Firstname</mat-label>
+                    <mat-label>Имя</mat-label>
                     <input type="text" matInput formControlName="firstName">
                 </mat-form-field>
     
                 <mat-form-field>
-                    <mat-label>Lastname</mat-label>
+                    <mat-label>Фамилия</mat-label>
                     <input type="text" matInput formControlName="lastName">
                 </mat-form-field>
     
                 <mat-form-field>
-                    <mat-label>Patronymic</mat-label>
+                    <mat-label>Отчество</mat-label>
                     <input type="text" matInput formControlName="patronymic">
                 </mat-form-field>
     
@@ -28,34 +28,29 @@
                 </mat-form-field>
     
                 <mat-form-field>
-                    <mat-label>Date Birth</mat-label>
+                    <mat-label>Дата рождения</mat-label>
                     <input type="date" matInput formControlName="dateBirth">
                 </mat-form-field>
     
                 <mat-form-field>
-                    <mat-label>City</mat-label>
+                    <mat-label>Город</mat-label>
                     <input type="text" matInput formControlName="city">
                 </mat-form-field>
             </div>
+
+            <div class="actions">
+                <div class="row center" *ngIf="!editMode">
+                    <button mat-raised-button color="primary" (click)="changeMode(true)">Редактировать</button>
+                </div>
+                <div class="row" *ngIf="editMode">
+                    <button mat-raised-button color="primary" (click)="updateProfile()">Сохранить</button>
+                    <button mat-raised-button (click)="changeMode(false)">Отмена</button>
+                </div>
+            </div>
         </form>
 
-        <div class="actions">
-            <div class="row center" *ngIf="!editMode">
-                <button mat-raised-button color="primary" (click)="changeMode(true)">Редактировать</button>
-            </div>
-            <div class="row" *ngIf="editMode">
-                <button mat-raised-button color="primary" (click)="updateProfile()">Сохранить</button>
-                <button mat-raised-button (click)="changeMode(false)">Отмена</button>
-            </div>
-
-            <div class="row">
-                <button mat-button color="primary" (click)="logout()">Выйти</button>
-                <button mat-button color="primary">Сменить пароль</button>
-            </div>
+        <div class="side-image">
+            <img src="assets/images/bg-shapes.svg" alt="">
         </div>
-    </div>
-
-    <div class="side-image">
-        <img src="assets/images/bg-shapes.svg" alt="">
     </div>
 </div>

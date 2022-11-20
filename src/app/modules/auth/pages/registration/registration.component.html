@@ -1,6 +1,6 @@
 <div class="registration-wrapper">
     <div class="wrapper">
-        <form class="form" [formGroup]="form" (submit)="submit()">
+        <form class="form" [formGroup]="form">
             <span class="title">Добро пожаловать!</span>
 
             <mat-form-field>
@@ -55,7 +55,7 @@
             </mat-form-field>
 
             <div class="form-control-wrapper">
-                <input type="submit" value="Подтвердить регистрацию по email" class="submit">
+                <button mat-raised-button (click)="submit()">Регистрация</button>
                 <div>
                     Уже зарегистрированы? <a href="">Войти</a>
                 </div>

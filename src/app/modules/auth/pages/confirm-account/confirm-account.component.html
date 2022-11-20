@@ -1,14 +1,21 @@
 <div class="confirm-account-wrapper">
     <div class="wrapper">
-        <form class="form" [formGroup]="form" (submit)="submit()">
-            <span class="title">Добро пожаловать!</span>
+        <form class="form" [formGroup]="form">
+            <span class="title">Подтверждение почты</span>
+
+
             <div class="form-control-wrapper">
                 <span class="subtitle">Введите код, который пришел в письме</span>
-                <input type="text" class="form-input" placeholder="Введите код из письма" formControlName="code">
+
+                <mat-form-field>
+                    <mat-label>Код</mat-label>
+                    <input type="text" matInput class="form-input" placeholder="Введите код из письма" formControlName="code">
+                </mat-form-field>
+                
             </div>
             
             <div class="form-control-wrapper">
-                <input type="submit" value="Подтвердить email" class="submit">
+                <button mat-raised-button (click)="submit()">Подтвердить</button>
                 <div>
                     Уже зарегистрированы? <a href="">Войти</a>
                 </div>

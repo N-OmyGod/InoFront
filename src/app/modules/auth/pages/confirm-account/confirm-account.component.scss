@@ -12,15 +12,20 @@
         height: fit-content;
 
         .form{
-            width: 300px;
+            width: 330px;
+            margin-top: 160px;
+          
+
 
             span{
                 &.title{
                     font-size: 22pt;
                     font-weight: bold;
+                    color: #00a1df;
                 }
 
                 &.subtitle{
+                    margin-top: 10px;
                     color: #9dafc2;
                 }
             }
@@ -30,22 +35,8 @@
                 flex-direction: column;
                 margin-bottom: 15px;
 
-                input{
-                    padding: 8px;
-                    margin-top: 5px;
-                    border-width: 0.5px;
-                    height: 30px;
-                    background-color: rgba($color: #9dafc2, $alpha: 0.1);
-                    border-radius: 10px;
-                    
-                    &.submit{
-                        background-color: rgba($color: #7db9f9, $alpha: 0.8);
-                        color: white;
-
-                        &:hover{
-                            cursor: pointer;
-                        }
-                    }
+                button{
+                    margin-bottom: 10px;
                 }
 
             }
@@ -56,7 +47,7 @@
         height: 100%;
 
         img{
-            width: 449px;
+            width: 509px;
             height: 100%;
         }
     }

@@ -43,3 +43,29 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-select-disabled .mat-select-value {
   color: rgba(black, 0.7);
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s;
+  -webkit-text-fill-color: black !important;
+}
+
+button{
+  &.mat-raised-button{
+
+
+    background-color: #00a1df;
+    color: white;
+    
+    &.mat-primary{
+      background-color: #00a1df;
+    }
+
+
+    &.delete{
+      background-color: #ef7676;
+    }
+  }
+}

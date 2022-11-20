@@ -75,8 +75,8 @@ export class ListComponent implements OnInit , AfterViewInit , OnDestroy{
   openDeleteDialog(): void{
     if (this.selectedcarIdx != null){
       this.matDialog.open(DeleteCarDialogComponent,{
-        width: '550px',
-        height: '200px',
+        width: '400px',
+        height: '180px',
         data: {
           id: this.selectedcarIdx
         }
@@ -101,7 +101,7 @@ export class ListComponent implements OnInit , AfterViewInit , OnDestroy{
       }
       this.matDialog.open(ViewCarDialogComponent, {
         width: '750px',
-        height: '500px',
+        height: '330px',
         data
       }).afterClosed()
       .pipe(

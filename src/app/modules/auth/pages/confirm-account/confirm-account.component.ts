@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AddUserCodeDto } from 'src/app/common/interfaces/dto/code.dto';
 import { AuthService } from 'src/app/common/services/auth/auth.service';
+import { StorageService } from 'src/app/common/services/storage.service';
 
 @Component({
   selector: 'app-confirm-account',
@@ -14,13 +15,17 @@ export class ConfirmAccountComponent implements OnInit {
   
   constructor(private fB: FormBuilder,
     private authService: AuthService,
-    private router:Router) {
+    private router:Router,
+    private storageService: StorageService) {
     this.form = this.fB.group({
       code: ['', Validators.required],
     })
    }
 
   ngOnInit(): void {
+    let token = this.storageService.get('accessToken');
+    if (token && token != '')
+      this.router.navigate(['cars']);
   }
 
   submit(): void{
