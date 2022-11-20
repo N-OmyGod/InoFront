@@ -13,14 +13,15 @@ export class ViewDealershipDialogComponent implements OnInit {
   dealership: ApiDealershipModel | null = null;
   constructor(
     public dialogRef: MatDialogRef<ViewDealershipDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: number,
+    @Inject(MAT_DIALOG_DATA) public data: ApiDealershipModel,
   ) { }
 
   ngOnInit(): void {
-    const founded = Dealerships.find(x => x.id == this.data);
-    this.dealership = founded != undefined ? founded : null;
+   // const founded = Dealerships.find(x => x.id == this.data);
+//this.dealership = founded != undefined ? founded : null;
+this.dealership=this.data;
   }
-
+ 
   close(): void {
     this.dialogRef.close();
   }

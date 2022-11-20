@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/common/services/auth/auth.service';
 import { ProfileService } from 'src/app/common/services/profile/profile.service';
 import { StorageService } from 'src/app/common/services/storage.service';
 
@@ -42,11 +43,13 @@ export class SideMenuComponent implements OnInit {
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
     private service: ProfileService,
-    private storage: StorageService) { }
+    private storage: StorageService,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
-    let token = this.storage.get('accessToken');
-    this.showRoutes = token && token !== '' ? true: false;
+   // let token = this.storage.get('accessToken');
+    this.authService.showText.subscribe((value)=>this.showRoutes=!value);
+  //  this.showRoutes = token && token !== '' ? true: false;
   }
 
   click(id: number): void{

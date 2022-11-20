@@ -18,7 +18,7 @@ export class ListComponent implements OnInit {
     private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    //this.loadData();
+    this.loadData();
   }
 
   loadData(): void {
@@ -28,11 +28,11 @@ export class ListComponent implements OnInit {
     });
   }
 
-  openViewDialog(id: number): void{
+  openViewDialog(model: ApiDealershipModel): void{
     this.dialog.open(ViewDealershipDialogComponent, {
       width: '620px',
       height: '210px',
-      data: id
+      data: model
     })
   }
 

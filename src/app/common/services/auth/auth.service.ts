@@ -14,7 +14,8 @@ import { TokensModel } from '../../interfaces/models/tokens.model';
 })
 export class AuthService {
   url: string = environment.backendUrl+'api/v1/user/';
-  userEmail : BehaviorSubject<string>=new BehaviorSubject('nuzdenova@sfedu.ru');
+  userEmail : BehaviorSubject<string>=new BehaviorSubject('');
+  showText: BehaviorSubject<boolean>=new BehaviorSubject(false);
   constructor(private http: HttpClient) { }
 
   login(body: LoginDto): Observable<ApiResponseMessage<TokensModel>>{

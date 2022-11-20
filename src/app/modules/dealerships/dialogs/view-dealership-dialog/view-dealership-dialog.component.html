@@ -34,16 +34,16 @@
                 <input 
                     matInput 
                     placeholder="Just a placeholder" 
-                    [value]="dealership?.openingTime | date: 'H:mm'" 
+                    [value]="dealership?.openingTime" 
                     [disabled]="true">
               </mat-form-field>
 
               <mat-form-field>
-                <mat-label>ВРемя закрытия</mat-label>
+                <mat-label>Время закрытия</mat-label>
                 <input 
                     matInput 
                     placeholder="Just a placeholder" 
-                    [value]="dealership?.closingTime | date: 'H:mm'" 
+                    [value]="dealership?.closingTime" 
                     [disabled]="true">
               </mat-form-field>
         </div>
